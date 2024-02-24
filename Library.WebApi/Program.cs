@@ -13,13 +13,18 @@ namespace Library.WebApi {
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Library.WebApi", Version = "v1" });
-            });          
+            });
 
             var app = builder.Build();
             app.UseSwagger();
             app.UseSwaggerUI();
 
             // Configure the HTTP request pipeline.
+
+            using (var scope = app.Services.CreateScope()) {
+                var dbcontext = scope.ServiceProvider.GetRequiredService<LibraryDbContext>();
+                dbcontext.Database.EnsureCreated();
+            }
 
             app.UseHttpsRedirection();
 
