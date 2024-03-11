@@ -49,13 +49,17 @@ namespace Library.UI {
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e) {
 
-           // var page = _serviceProvider.GetRequiredService<InstallPokemon>();
-           // Navigate(page);
+            var page = _serviceProvider.GetRequiredService<UsersPage>();
+            Navigate(page);
         }
 
         private void Window_Closed(object sender, EventArgs e) {
             Application.Current.Shutdown();
         }
 
+        private void btnAddBook_Click(object sender, RoutedEventArgs e) {
+            var page = _serviceProvider.GetRequiredService<BooksPage>();
+            Navigate(page);
+        }
     }
 }

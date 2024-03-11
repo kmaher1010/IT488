@@ -13,6 +13,8 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Net.Http;
+using Library.UI.Services.LibraryService;
 
 namespace Library.UI
 {
@@ -59,14 +61,23 @@ namespace Library.UI
             AppHost = hostBuilder
                 .UseSerilog()
                 .ConfigureServices((hostContext, services) => {
-                    ConfigureServices(services);
+                    ConfigureServices(hostContext, services);
                 })
                 .Build();
         }
 
-        private void ConfigureServices(IServiceCollection services) {
+        private void ConfigureServices(HostBuilderContext builder, IServiceCollection services) {
+            services.AddHttpClient();
+
+            services.Configure<AppSettings>(builder.Configuration.GetSection(nameof(AppSettings)));
+
             services.AddSingleton<Serilog.ILogger>(provider => { return Log.Logger; });
             services.AddTransient<IMainWindow, MainWindow>();
+            services.AddTransient<UsersPage>();
+            services.AddTransient<AddUserDialog>();
+            services.AddTransient<BooksPage>();
+            services.AddTransient<AddBookDialog>();
+            services.AddScoped<ILibraryService, LibraryService>();
         }
         protected override async void OnStartup(StartupEventArgs e) {
             await AppHost!.StartAsync();

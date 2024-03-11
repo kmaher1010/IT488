@@ -1,0 +1,16 @@
+﻿<Window x:Class="Library.UI.AddBookDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library.UI"
+        mc:Ignorable="d"
+        Title="Add a new book" Height="150" Width="300">
+    <Grid>
+        <StackPanel Margin="10">
+            <Label x:Name="lblBookTitle" Content="Enter Book Title"/>
+            <TextBox x:Name="txtBookTitle"/>
+            <Button Content="OK" Width="40" Margin="5" Click="btnDialogOk_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
