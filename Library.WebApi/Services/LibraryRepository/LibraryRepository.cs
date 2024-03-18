@@ -11,7 +11,7 @@ namespace Library.WebApi.Services.LibraryRepository {
         Task<Book?> GetBookById(int id);
         Task<Book?> AddBook(Book book);
         Task<Book?> CheckOut(int userId, int bookId);
-        Task<Book?> CheckIn(int userId, int bookId);
+        Task<Book?> CheckIn(int bookId);
     }
 
     public class LibraryRepository: ILibraryRepository {
@@ -64,11 +64,8 @@ namespace Library.WebApi.Services.LibraryRepository {
             return book;
         }
 
-        public async Task<Book?> CheckIn(int userId, int bookId) {
-            var user = await _dbContext.Users.Where(u => u.Id == userId).FirstOrDefaultAsync();
-            if (user == null) {
-                return null;
-            }
+        public async Task<Book?> CheckIn(int bookId) {
+
             var book = await _dbContext.Books.Where(b => b.Id == bookId).FirstOrDefaultAsync();
             if (book == null) {
                 return null;

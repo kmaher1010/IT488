@@ -77,6 +77,8 @@ namespace Library.UI
             services.AddTransient<AddUserDialog>();
             services.AddTransient<BooksPage>();
             services.AddTransient<AddBookDialog>();
+            services.AddTransient<CheckoutBooksPage>();
+            services.AddTransient<CheckinBooksPage>();
             services.AddScoped<ILibraryService, LibraryService>();
         }
         protected override async void OnStartup(StartupEventArgs e) {

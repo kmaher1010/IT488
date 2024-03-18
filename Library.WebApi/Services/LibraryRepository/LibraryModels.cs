@@ -5,7 +5,6 @@
     }
 
     public class BookCheckinRequest {
-        public int UserId { get; set; }
         public int BookId { get; set; }
     }
 

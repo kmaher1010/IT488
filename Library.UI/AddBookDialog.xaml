@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.UI"
         mc:Ignorable="d"
-        Title="Add a new book" Height="150" Width="300">
+        Title="Add a new book" Height="150" Width="300" WindowStartupLocation="CenterOwner">
     <Grid>
         <StackPanel Margin="10">
             <Label x:Name="lblBookTitle" Content="Enter Book Title"/>

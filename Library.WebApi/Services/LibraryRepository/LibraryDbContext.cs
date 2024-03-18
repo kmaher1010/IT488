@@ -34,6 +34,7 @@ namespace Library.WebApi.Services.LibraryRepository {
         public int Id { get; set; }
         public string Title { get; set; }
         public int? CheckedOutByUserId { get; set; }
+        public string? CheckedOutByUserName { get; set; }
 
     }
 

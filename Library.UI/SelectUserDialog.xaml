@@ -1,0 +1,13 @@
+﻿<Window x:Class="Library.UI.SelectUserDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library.UI"
+        mc:Ignorable="d"
+        Title="Select User" Height="300" Width="350" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <ListBox x:Name="UserListBox" ItemsSource="{Binding Users}" DisplayMemberPath="Name" />
+        <Button Content="Select User" Click="SelectUser_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+    </Grid>
+</Window>

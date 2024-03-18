@@ -61,5 +61,15 @@ namespace Library.UI {
             var page = _serviceProvider.GetRequiredService<BooksPage>();
             Navigate(page);
         }
+
+        private void btnCheckoutBook_Click(object sender, RoutedEventArgs e) {
+            var page = _serviceProvider.GetRequiredService<CheckoutBooksPage>();
+            Navigate(page);
+        }
+
+        private void btnCheckInBook_Click(object sender, RoutedEventArgs e) {
+            var page = _serviceProvider.GetRequiredService<CheckinBooksPage>();
+            Navigate(page);
+        }
     }
 }

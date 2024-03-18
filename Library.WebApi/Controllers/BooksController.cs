@@ -29,7 +29,7 @@ namespace Library.WebApi.Controllers {
 
         [HttpPost("checkin")]
         public async Task<ActionResult<Book>> Checkin(BookCheckinRequest request) {
-            return Ok(await _libraryRepository.CheckIn(request.UserId, request.BookId));
+            return Ok(await _libraryRepository.CheckIn(request.BookId));
         }
     }
 

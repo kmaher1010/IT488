@@ -15,8 +15,8 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
             <Button x:Name="btnAddUser"  Width="Auto" Margin="5" HorizontalAlignment="Left" Content="Users" Click="btnAddUser_Click" ></Button>
             <Button x:Name="btnAddBook"  Width="Auto" Margin="5" HorizontalAlignment="Left" Content="Books" Click="btnAddBook_Click"  ></Button>
-            <Button x:Name="btnCheckInBook"  Width="Auto" Margin="5" HorizontalAlignment="Left" Content="Checkin Book"  ></Button>
-            <Button x:Name="btnCheckoutBook"  Width="Auto" Margin="5" HorizontalAlignment="Left" Content="Checkout Book"  ></Button>
+            <Button x:Name="btnCheckInBook"  Width="Auto" Margin="5" HorizontalAlignment="Left" Content="Checkin Book" Click="btnCheckInBook_Click"  ></Button>
+            <Button x:Name="btnCheckoutBook"  Width="Auto" Margin="5" HorizontalAlignment="Left" Content="Checkout Book" Click="btnCheckoutBook_Click"  ></Button>
             <Button x:Name="btnExit"  Width="Auto" Margin="5" HorizontalAlignment="Left" Content="Exit" Click="btnClose_Click"></Button>
         </StackPanel>
         <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Grid.Row="1" >

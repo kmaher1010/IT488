@@ -19,6 +19,8 @@ namespace Library.UI.Services.LibraryService {
         public int Id { get; set; }
         public string? Title { get; set; }
         public int? CheckedOutByUserId { get; set; }
+        public string? CheckedOutByUserName { get; set; }
+        public bool IsCheckedOut { get; set; }
 
     }
 
@@ -28,7 +30,11 @@ namespace Library.UI.Services.LibraryService {
 
         Task<List<Book>> GetBooks();
         Task<Book> AddNewBook(string title);
+
+        Task<Book> CheckoutBook(int bookId, int userId);
+        Task<Book> CheckinBook(int bookId);
     }
+
     public class LibraryService : ILibraryService {
         private readonly HttpClient _httpClient;
         private readonly string _baseAddress;
@@ -67,6 +73,22 @@ namespace Library.UI.Services.LibraryService {
             var newBook = new Book { Title = title };
             var content = new StringContent(JsonConvert.SerializeObject(newBook), System.Text.Encoding.UTF8, "application/json");
             var response = await _httpClient.PostAsync($"{_baseAddress}/api/books", content);
+            response.EnsureSuccessStatusCode();
+            var data = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Book>(data);
+        }
+
+        public async Task<Book> CheckoutBook(int bookId, int userId) {
+            var content = new StringContent(JsonConvert.SerializeObject(new {userId=userId, bookId=bookId}), System.Text.Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync($"{_baseAddress}/api/books/checkout", content);
+            response.EnsureSuccessStatusCode();
+            var data = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Book>(data);
+        }
+
+        public async Task<Book> CheckinBook(int bookId) {
+            var content = new StringContent(JsonConvert.SerializeObject(new { bookId = bookId }), System.Text.Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync($"{_baseAddress}/api/books/checkin", content);
             response.EnsureSuccessStatusCode();
             var data = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Book>(data);
