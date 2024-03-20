@@ -59,6 +59,7 @@ namespace Library.UI {
                 }
 
                 var selectUserDialog = new SelectUserDialog( _libraryService);
+                selectUserDialog.Owner = Window.GetWindow(this);
                 if (selectUserDialog.ShowDialog() == true) {
                     var newBook = await _libraryService.CheckoutBook(_selectedBook.Id, selectUserDialog._selectedUser.Id);
                     var update = Books.FirstOrDefault(b => b.Id == newBook.Id);

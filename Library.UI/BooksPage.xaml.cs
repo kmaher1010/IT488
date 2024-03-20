@@ -25,6 +25,7 @@ namespace Library.UI {
 
         private async void AddBook_Click(object sender, RoutedEventArgs e) {
             var inputDialog = new AddBookDialog();
+            inputDialog.Owner = Window.GetWindow(this);
             if (inputDialog.ShowDialog() == true) {
                 var newBook = await _libraryService.AddNewBook(inputDialog.Answer);
                 Books.Add(newBook);

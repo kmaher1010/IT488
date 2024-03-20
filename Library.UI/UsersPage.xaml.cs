@@ -26,6 +26,7 @@ namespace Library.UI {
 
         private async void AddUser_Click(object sender, RoutedEventArgs e) {
             var inputDialog = new AddUserDialog();
+            inputDialog.Owner = Window.GetWindow(this);
             if (inputDialog.ShowDialog() == true) {
                 var newUser = await _libraryService.AddNewUser(inputDialog.Answer);
                 Users.Add(newUser);
